@@ -503,7 +503,716 @@ body { padding-bottom: 80px; }
 /* ── TOAST ── */
 .toast { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%) translateY(80px); background:#1a0a00; color:var(--cream); padding:.62rem 1.4rem; border-radius:8px; font-size:.85rem; font-weight:600; z-index:9999; transition:transform .3s; pointer-events:none; white-space:nowrap; }
 .toast.on { transform:translateX(-50%) translateY(0); }
-</style>
+
+  /* HEALTHY SMOKE — ROYAL STYLE UPGRADE
+   VISUAL OVERRIDES ONLY
+   Existing HTML, JavaScript, checkout, Square and Worker logic stay unchanged.
+*/
+
+:root {
+  --hs-shadow:0 8px 28px rgba(38,18,6,.10);
+  --hs-shadow-lg:0 16px 44px rgba(38,18,6,.16);
+}
+
+body {
+  background:#fcf8f3;
+}
+
+button {
+  transition:all .18s ease;
+}
+
+button:hover {
+  transform:translateY(-1px);
+}
+
+/* NAVIGATION */
+
+nav {
+  height:70px;
+  background:rgba(26,10,0,.985);
+  border-bottom:2px solid var(--gold);
+  box-shadow:0 5px 20px rgba(0,0,0,.18);
+}
+
+.nav-logo {
+  gap:11px;
+}
+
+.nav-logo img {
+  width:44px;
+  height:44px;
+  border:2px solid var(--gold);
+  box-shadow:0 3px 12px rgba(0,0,0,.25);
+}
+
+.nav-logo-text {
+  font-size:1.55rem;
+}
+
+.nav-btn {
+  padding:.45rem .7rem;
+  border-radius:100px;
+  font-weight:600;
+}
+
+.nav-btn:hover {
+  background:rgba(255,255,255,.06);
+}
+
+.cart-btn {
+  border-radius:100px;
+  padding:.55rem 1.15rem;
+  box-shadow:0 6px 18px rgba(192,57,11,.30);
+}
+
+.admin-btn {
+  border-radius:100px;
+  padding:.48rem .9rem;
+  border:1px solid rgba(245,237,224,.34);
+  color:rgba(245,237,224,.85);
+}
+
+.menu-pg,
+.co-pg,
+.alog-pg,
+.adash-pg {
+  padding-top:70px;
+}
+
+.menu-tabs {
+  top:70px;
+}
+
+.adash-bar {
+  top:70px;
+}
+
+/* HOME HERO */
+
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%,rgba(232,160,32,.14),transparent 36%),
+    radial-gradient(circle at 85% 72%,rgba(232,76,26,.13),transparent 40%),
+    linear-gradient(155deg,#120600,#291006 52%,#160800);
+  padding-top:120px;
+}
+
+.hero-inner {
+  max-width:760px;
+}
+
+.hero-badge {
+  padding:.43rem 1.1rem;
+  border-radius:100px;
+  background:rgba(232,160,32,.10);
+  border-color:rgba(232,160,32,.42);
+}
+
+.hero h1 {
+  text-shadow:0 6px 24px rgba(0,0,0,.28);
+}
+
+.hero-sub {
+  max-width:510px;
+  color:rgba(245,237,224,.68);
+}
+
+.btn-fire {
+  border-radius:100px;
+  padding:.9rem 2rem;
+  box-shadow:0 8px 20px rgba(192,57,11,.25);
+}
+
+.btn-ring {
+  border-radius:100px;
+  background:rgba(255,255,255,.035);
+}
+
+.hero-stats {
+  gap:2.6rem;
+}
+
+/* DELIVERY STRIP */
+
+.dstrip {
+  padding:15px 5%;
+  background:linear-gradient(90deg,#102b08,#1c4411,#102b08);
+  border-top:1px solid rgba(127,212,90,.15);
+  border-bottom:1px solid rgba(127,212,90,.15);
+}
+
+/* PHOTO GRID */
+
+.photo-grid {
+  gap:6px;
+  border-radius:18px 18px 0 0;
+  overflow:hidden;
+}
+
+.photo-cell img {
+  transition:transform .45s ease;
+}
+
+.photo-cell:hover img {
+  transform:scale(1.035);
+}
+
+/* HOME SECTIONS */
+
+.hs {
+  padding:70px 5%;
+}
+
+.feat-grid {
+  gap:1.2rem;
+}
+
+.feat-card {
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 5px 18px rgba(38,18,6,.06);
+  padding:1.25rem;
+  transition:all .18s ease;
+}
+
+.feat-card:hover {
+  transform:translateY(-2px);
+  box-shadow:var(--hs-shadow);
+  border-color:#e2c7a8;
+}
+
+.feat-add-btn {
+  border-radius:100px;
+  padding:.45rem .9rem;
+}
+
+.about-img {
+  border-radius:20px;
+  box-shadow:var(--hs-shadow-lg);
+}
+
+.about-pill {
+  padding:.36rem .78rem;
+}
+
+.zone-card {
+  border-radius:16px;
+  padding:1.35rem 1.65rem;
+}
+
+/* MENU */
+
+.menu-hero {
+  padding:2.7rem 5%;
+  background:
+    radial-gradient(circle at 75% 10%,rgba(232,160,32,.12),transparent 35%),
+    var(--char);
+  border-bottom:2px solid var(--gold);
+}
+
+.menu-hero h2 {
+  font-size:3rem;
+}
+
+.menu-tabs {
+  padding:1rem 4%;
+  background:#241914;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.mtab {
+  border-radius:100px;
+  padding:.45rem 1rem;
+  border:1px solid rgba(245,237,224,.08);
+}
+
+.mtab.on {
+  box-shadow:0 4px 12px rgba(192,57,11,.25);
+}
+
+.menu-body {
+  max-width:1140px;
+  padding:2.3rem 4% 4rem;
+}
+
+.items-grid {
+  gap:1rem;
+}
+
+.mcard {
+  border-radius:16px;
+  padding:1.2rem 1.3rem;
+  box-shadow:0 4px 15px rgba(36,20,10,.045);
+  transition:all .18s ease;
+}
+
+.mcard:hover {
+  transform:translateY(-2px);
+  border-color:#d9b18d;
+  box-shadow:var(--hs-shadow);
+}
+
+.mcard-add {
+  border-radius:100px;
+  padding:.42rem .82rem;
+}
+
+.mcard-price {
+  font-size:1.3rem;
+}
+
+/* CART */
+
+.cart-overlay {
+  backdrop-filter:blur(2px);
+}
+
+.cart-drawer {
+  width:410px;
+  box-shadow:-12px 0 40px rgba(0,0,0,.22);
+}
+
+.cart-hd {
+  padding:1.2rem 1.4rem;
+  border-bottom:2px solid var(--gold);
+}
+
+.cart-hd h3 {
+  font-size:1.6rem;
+}
+
+.qbtn {
+  border-radius:50%;
+}
+
+.cart-ft {
+  background:#fffaf5;
+}
+
+.cart-go-btn {
+  border-radius:100px;
+  box-shadow:0 6px 17px rgba(192,57,11,.22);
+}
+
+/* CHECKOUT */
+
+.co-top {
+  padding:2rem 5%;
+  border-bottom:2px solid var(--gold);
+  background:
+    radial-gradient(circle at 80% 0%,rgba(232,160,32,.11),transparent 40%),
+    var(--char);
+}
+
+.co-top h2 {
+  font-size:2.2rem;
+}
+
+.co-body {
+  max-width:950px;
+  padding:2.5rem 4% 4rem;
+  gap:1.4rem;
+}
+
+.fcard,
+.sum-card {
+  border-radius:18px;
+  box-shadow:var(--hs-shadow);
+  border-color:#e6d9cc;
+}
+
+.fcard-hd,
+.sum-hd {
+  padding:1.05rem 1.4rem;
+  border-bottom:2px solid var(--gold);
+}
+
+.fcard-hd h3,
+.sum-hd h3 {
+  font-size:1.45rem;
+}
+
+.fcard-body {
+  padding:1.5rem;
+}
+
+.fg input,
+.fg textarea {
+  border-radius:10px;
+  padding:.7rem .9rem;
+}
+
+.fg input:focus,
+.fg textarea:focus {
+  box-shadow:0 0 0 3px rgba(192,57,11,.08);
+}
+
+.info-box {
+  border-radius:11px;
+}
+
+.pay-opts {
+  gap:.65rem;
+}
+
+.pay-opt {
+  border-radius:13px;
+  padding:1rem .55rem;
+  min-height:110px;
+  justify-content:center;
+  transition:all .18s ease;
+}
+
+.pay-opt:hover {
+  transform:translateY(-2px);
+  box-shadow:0 5px 14px rgba(0,0,0,.07);
+}
+
+.place-btn {
+  border-radius:100px;
+  box-shadow:0 7px 20px rgba(192,57,11,.24);
+}
+
+.sum-card {
+  top:92px;
+}
+
+/* CONFIRMATION */
+
+.conf-card {
+  border-radius:22px;
+  border:1px solid #eaded2;
+  box-shadow:var(--hs-shadow-lg);
+}
+
+.conf-icon {
+  box-shadow:0 5px 18px rgba(0,168,107,.12);
+}
+
+.cbtn {
+  border-radius:100px;
+}
+
+/* ADMIN LOGIN */
+
+.alog-pg {
+  background:
+    radial-gradient(circle at 50% 12%,rgba(232,160,32,.14),transparent 35%),
+    linear-gradient(155deg,#120600,#2b1105);
+}
+
+.alog-card {
+  border-radius:20px;
+  padding:2.7rem 2.2rem;
+  background:rgba(45,36,32,.92);
+  border:1px solid rgba(232,160,32,.20);
+  box-shadow:0 20px 55px rgba(0,0,0,.28);
+}
+
+.alog-input {
+  border-radius:10px;
+}
+
+.alog-btn {
+  border-radius:100px;
+}
+
+/* ADMIN DASHBOARD */
+
+.adash-pg {
+  background:#f5f2ee;
+}
+
+.adash-bar {
+  border-bottom:2px solid var(--gold);
+  padding:.95rem 4%;
+}
+
+.adash-bar h2 {
+  font-size:1.5rem;
+}
+
+.signout-btn {
+  border-radius:100px;
+}
+
+.adash-body {
+  max-width:1160px;
+  padding:1.7rem 4% 4rem;
+}
+
+.atabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+  border-bottom:none;
+  margin-bottom:1.4rem;
+}
+
+.atab {
+  margin-bottom:0;
+  padding:.62rem 1.05rem;
+  border:1px solid #ddd2c7;
+  border-radius:100px;
+  background:#fff;
+  color:#665b54;
+}
+
+.atab.on {
+  background:var(--char);
+  color:#fff;
+  border-color:var(--char);
+}
+
+.stats-row {
+  gap:.85rem;
+}
+
+.stat-box {
+  border-radius:16px;
+  padding:1.15rem 1.2rem;
+  box-shadow:0 4px 14px rgba(0,0,0,.04);
+}
+
+.stat-n {
+  font-size:2rem;
+}
+
+.orders-hd {
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:.9rem 1rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.035);
+}
+
+.act-btn {
+  border-radius:100px;
+  padding:.4rem .85rem;
+}
+
+.ocard {
+  border-radius:17px;
+  padding:1.25rem 1.4rem;
+  box-shadow:0 5px 16px rgba(0,0,0,.045);
+}
+
+.ocard-id {
+  font-size:1.25rem;
+}
+
+.st-btn {
+  padding:.34rem .78rem;
+  transition:all .15s ease;
+}
+
+/* EDIT MENU */
+
+.mmgmt-note {
+  background:#fff8e8;
+  border:1px solid #ead39d;
+  padding:.8rem 1rem;
+  border-radius:12px;
+}
+
+.mm-tb-btn {
+  border-radius:100px;
+  padding:.5rem .95rem;
+}
+
+.mm-section {
+  border-radius:16px;
+  box-shadow:0 4px 13px rgba(0,0,0,.035);
+}
+
+.mm-sec-hd {
+  padding:.85rem 1.1rem;
+  background:#fbf6ef;
+}
+
+.mm-desc-in,
+.mm-price-in,
+.mm-add-in,
+.mm-add-sel {
+  border-radius:8px;
+}
+
+.mm-add-form {
+  border-radius:15px;
+  padding:1.1rem;
+}
+
+.mm-save-btn {
+  border-radius:100px;
+}
+
+/* SETTINGS */
+
+.settings-card {
+  border-radius:16px;
+  box-shadow:0 4px 13px rgba(0,0,0,.035);
+}
+
+.f-opt {
+  border-radius:11px;
+}
+
+.settings-save {
+  border-radius:100px;
+}
+
+.pickup-day-btn {
+  border-radius:100px;
+}
+
+/* SQUARE SYNC */
+
+.sq-sync-card {
+  border-radius:16px;
+  box-shadow:0 4px 13px rgba(0,0,0,.035);
+}
+
+.sq-sync-in,
+.sq-sync-show {
+  border-radius:10px;
+}
+
+.sq-sync-log {
+  border-radius:12px;
+}
+
+/* QR BAR */
+
+.qr-sticky {
+  border-top:2px solid var(--gold);
+  background:rgba(26,10,0,.985);
+  box-shadow:0 -5px 22px rgba(0,0,0,.28);
+}
+
+.qr-sticky img {
+  border-radius:9px;
+}
+
+.qr-sticky-link {
+  border-radius:100px;
+}
+
+/* MODAL */
+
+.modal-box {
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.22);
+}
+
+.modal-cancel,
+.modal-ok {
+  border-radius:100px;
+}
+
+/* TOAST */
+
+.toast {
+  border-radius:100px;
+  box-shadow:0 8px 22px rgba(0,0,0,.22);
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  nav {
+    height:64px;
+  }
+
+  .menu-pg,
+  .co-pg,
+  .alog-pg,
+  .adash-pg {
+    padding-top:64px;
+  }
+
+  .menu-tabs,
+  .adash-bar {
+    top:64px;
+  }
+
+  .hero {
+    padding-top:100px;
+  }
+
+  .hero-stats {
+    gap:1.4rem;
+  }
+
+  .co-body {
+    padding-left:3%;
+    padding-right:3%;
+  }
+
+  .stats-row {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .orders-hd {
+    align-items:flex-start;
+    gap:.65rem;
+    flex-wrap:wrap;
+  }
+
+  .atabs {
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:.25rem;
+  }
+
+  .atab {
+    flex-shrink:0;
+  }
+
+  .ocard-top {
+    flex-wrap:wrap;
+  }
+}
+
+@media(max-width:480px) {
+  .nav-logo-text {
+    font-size:1.2rem;
+  }
+
+  .nav-logo img {
+    width:38px;
+    height:38px;
+  }
+
+  .cart-btn {
+    padding:.46rem .8rem;
+  }
+
+  .admin-btn {
+    padding:.42rem .65rem;
+  }
+
+  .pay-opts {
+    gap:.45rem;
+  }
+
+  .pay-opt {
+    padding:.7rem .3rem;
+  }
+
+  .fcard-body {
+    padding:1.1rem;
+  }
+
+  .stats-row {
+    gap:.55rem;
+  }
+
+  .stat-box {
+    padding:.85rem;
+  }
+}
+  </style>
 </head>
 <body>
 <!-- Healthy Smoke order-first checkout rebuild: order is stored before external payment -->
