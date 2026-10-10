@@ -43,13 +43,13 @@ nav {
 }
 .nav-btn:hover { color:var(--gold); }
 .cart-btn {
-  background:var(--ember); color:#fff; border:none; border-radius:4px;
+  background:(--ember); color:#fff; border:none; border-radius:4px;
   padding:.45rem 1rem; font-family:'DM Sans',sans-serif; font-weight:700; font-size:.85rem;
   cursor:pointer; display:flex; align-items:center; gap:.4rem;
 }
-.cart-btn:hover { background:var(--ember2); }
+.cart-btn:hover { background:(--ember2); }
 .cart-badge {
-  background:#fff; color:var(--ember); border-radius:50%;
+  background:#fff; color:(--ember); border-radius:50%;
   width:18px; height:18px; font-size:.7rem; font-weight:800;
   display:none; align-items:center; justify-content:center;
 }
@@ -59,7 +59,7 @@ nav {
   color:rgba(245,237,224,0.55); border-radius:4px; padding:.38rem .8rem;
   font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:600; cursor:pointer;
 }
-.admin-btn:hover { border-color:var(--gold); color:var(--gold); }
+.admin-btn:hover { border-color:(--gold); color:(--gold); }
 @media(max-width:600px) { .hide-sm { display:none; } }
 
 /* ── PAGES ── */
@@ -79,37 +79,37 @@ nav {
 }
 @keyframes float {
   0%   { transform:translateY(100vh) translateX(0) scale(1); opacity:.7; }
-  100% { transform:translateY(-80px) translateX(var(--sx)) scale(.1); opacity:0; }
+  100% { transform:translateY(-80px) translateX((--sx)) scale(.1); opacity:0; }
 }
 .hero-inner { position:relative; z-index:2; max-width:700px; }
 .hero-badge {
   display:inline-flex; align-items:center; gap:.4rem;
-  background:rgba(192,57,11,.15); border:1px solid rgba(192,57,11,.35); color:var(--gold);
+  background:rgba(192,57,11,.15); border:1px solid rgba(192,57,11,.35); color:(--gold);
   padding:.35rem 1rem; border-radius:100px; font-size:.75rem; font-weight:700;
   letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.2rem;
 }
 .hero h1 {
   font-family:'Bebas Neue',cursive; font-size:clamp(3.5rem,10vw,7rem);
-  line-height:.92; color:var(--cream); margin-bottom:.6rem;
+  line-height:.92; color:(--cream); margin-bottom:.6rem;
 }
-.hero h1 em { color:var(--ember); font-style:normal; }
+.hero h1 em { color:(--ember); font-style:normal; }
 .hero-sub {
   font-size:1rem; color:rgba(245,237,224,.55);
   max-width:440px; margin:0 auto 2rem; line-height:1.7;
 }
 .hero-btns { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
 .btn-fire {
-  background:var(--ember); color:#fff; border:none; border-radius:5px;
+  background:(--ember); color:#fff; border:none; border-radius:5px;
   padding:.85rem 2rem; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem;
   cursor:pointer;
 }
-.btn-fire:hover { background:var(--ember2); }
+.btn-fire:hover { background:(--ember2); }
 .btn-ring {
-  background:none; border:1.5px solid rgba(245,237,224,.2); color:var(--cream);
+  background:none; border:1.5px solid rgba(245,237,224,.2); color:(--cream);
   border-radius:5px; padding:.85rem 1.8rem;
   font-family:'DM Sans',sans-serif; font-size:.95rem; font-weight:500; cursor:pointer;
 }
-.btn-ring:hover { border-color:var(--gold); color:var(--gold); }
+.btn-ring:hover { border-color:(--gold); color:var(--gold); }
 .hero-stats { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; }
 .hstat-n { font-family:'Bebas Neue',cursive; font-size:1.8rem; color:var(--gold); }
 .hstat-l { font-size:.72rem; color:rgba(245,237,224,.4); text-transform:uppercase; letter-spacing:.08em; }
@@ -1715,7 +1715,7 @@ var MENU = [
 var FEATURED_IDS = ["brisket","full_rib","half_rib","fish_co","w20","w5_fries","seas_fries","sweet_tea"];
 var ADMIN_PASS   = "smoke2024!";
 var API_BASE     = "https://healthysmoke-orders.hayeshealthysmoke.workers.dev";
-var SQUARE_CATALOG_URL = "https://healthysmoke-square.hayeshealthysmoke.workers.dev/";
+var SQUARE_CATALOG_URL = "https://healthysmoke-catalog.hayeshealthysmoke.workers.dev/";
 
 /* ─── STATE ─── */
 var cart           = [];
@@ -2361,6 +2361,7 @@ function loadSquareCatalog(showLog) {
     log.style.display = "block";
     sqLog("Connecting to Square...");
     sqLog("Fetching production catalog items...");
+    sqLog("URL: " + SQUARE_CATALOG_URL, "warn");
   }
 
   return fetch(SQUARE_CATALOG_URL, {
