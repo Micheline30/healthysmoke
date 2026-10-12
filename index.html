@@ -1987,6 +1987,7 @@ function updateDeliveryUI() {
 }
 
 function addToCart(id, name, price) {
+  if (!Array.isArray(cart)) cart = [];
   for (var i = 0; i < cart.length; i++) {
     if (cart[i].id === id) { cart[i].qty++; lsSet("hs_cart", cart); updateCartUI(); toast("Added: " + name); return; }
   }
@@ -3368,10 +3369,22 @@ function placeOrder() {
     document.getElementById("confTotal").textContent = "$" + orderTotal.toFixed(2);
     updateSquarePayButton();
 
-    cart = [];
-    lsSet("hs_cart", cart);
-    updateCartUI();
-    payMethod = "";
+    cart.length = 0;
+
+// Completely remove the previous cart from browser storage
+try {
+  localStorage.removeItem("hs_cart");
+} catch (e) {}
+
+// Re-create a clean empty cart
+lsSet("hs_cart", []);
+
+// Reset cart display
+updateCartUI();
+renderCartItems();
+
+// Reset payment selection
+payMethod = "";
     if (placeBtn) { placeBtn.disabled = false; placeBtn.textContent = "🔥 Submit My Food Order"; }
     go("confirm");
 
