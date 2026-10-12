@@ -2667,6 +2667,66 @@ function paymentBadgeHtml(o) {
   var method = String(o.pay || "").toLowerCase();
   var ps = String(o.paymentStatus || "").toLowerCase();
 
+  // Already paid — applies to all payment methods
+  if (ps === "paid") {
+    var paidName = method === "cashapp"
+      ? "CASH APP"
+      : method === "cash"
+        ? "CASH"
+        : "SQUARE";
+
+    return '<div class="payment-line">' +
+      '<span class="pay-badge paid">✅ ' + paidName + ' — PAID</span>' +
+      '</div>';
+  }
+
+  // Square payments are updated by Square
+  if (method === "square") {
+    if (ps === "failed" || ps === "declined") {
+      return '<div class="payment-line">' +
+        '<span class="pay-badge failed">⚠️ SQUARE — PAYMENT FAILED</span>' +
+        '</div>';
+    }
+
+    return '<div class="payment-line">' +
+      '<span class="pay-badge pending">⏳ SQUARE — PAYMENT PENDING</span>' +
+      '</div>';
+  }
+
+  // Cash
+  if (method === "cash") {
+    var cashText =
+      String(o.address || "").toLowerCase() === "pickup"
+        ? "PAY AT PICKUP"
+        : "PAY AT DELIVERY";
+
+    return '<div class="payment-line">' +
+      '<span class="pay-badge cash">💵 CASH — ' + cashText + '</span> ' +
+      '<button type="button" onclick="markOrderPaid(\'' + o.id + '\')" ' +
+      'style="margin-left:8px;padding:7px 12px;border:0;border-radius:8px;' +
+      'font-weight:800;cursor:pointer;background:#198754;color:white;">' +
+      '✓ Mark Paid</button>' +
+      '</div>';
+  }
+
+  // Cash App
+  if (method === "cashapp") {
+    return '<div class="payment-line">' +
+      '<span class="pay-badge cashapp">💚 CASH APP — VERIFY PAYMENT</span> ' +
+      '<button type="button" onclick="markOrderPaid(\'' + o.id + '\')" ' +
+      'style="margin-left:8px;padding:7px 12px;border:0;border-radius:8px;' +
+      'font-weight:800;cursor:pointer;background:#198754;color:white;">' +
+      '✓ Mark Paid</button>' +
+      '</div>';
+  }
+
+  return '<div class="payment-line">' +
+    '<span class="pay-badge pending">⏳ PAYMENT PENDING</span>' +
+    '</div>';
+}
+  var method = String(o.pay || "").toLowerCase();
+  var ps = String(o.paymentStatus || "").toLowerCase();
+
   if (method === "square") {
     if (ps === "paid") {
       return '<div class="payment-line"><span class="pay-badge paid">✅ SQUARE — PAID</span></div>';
@@ -2712,7 +2772,39 @@ function renderOrderList() {
   }
   el.innerHTML = h;
 }
+function markOrderPaid(id) {
+  if (!confirm("Confirm that payment has been received?")) {
+    return;
+  }
 
+  fetch(API_BASE + "/admin/order/" + id, {
+    method: "PUT",
+    headers: adminHeaders(),
+    body: JSON.stringify({
+      payment_status: "paid"
+    })
+  })
+  .then(function(r) {
+    return r.json();
+  })
+  .then(function(data) {
+    if (data.error) {
+      toast("Payment update failed: " + data.error);
+      return;
+    }
+
+    toast("✓ Payment marked as paid");
+
+    // Reload from Cloudflare so Collected/Pending totals update too
+    loadAdminOrders();
+  })
+  .catch(function(err) {
+    toast("Failed to update payment.");
+    console.error(err);
+  });
+}
+
+window.markOrderPaid = markOrderPaid;
 function setStatus(id, status) {
   fetch(API_BASE + "/admin/order/" + id, {
     method: "PUT",
