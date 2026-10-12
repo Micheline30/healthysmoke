@@ -2712,7 +2712,7 @@ function markOrderPaid(id) {
     }
 
     toast("✓ Payment marked as paid");
-    loadAdminOrders();
+    loadAdmin();
   })
   .catch(function(err) {
     toast("Failed to update payment.");
