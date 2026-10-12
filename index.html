@@ -2677,7 +2677,7 @@ function paymentBadgeHtml(o) {
   }
 
   if (method === "cash") {
-    return '<div class="payment-line"><span class="pay-badge cash">💵 CASH — PAY AT PICKUP</span></div>';
+    return '<div class="payment-line"><span class="pay-badge cash">💵 CASH — ' + (String(o.address || "").toLowerCase() === "pickup" ? "PAY AT PICKUP" : "PAY AT DELIVERY") + '</span></div>';
   }
 
   if (method === "cashapp") {
